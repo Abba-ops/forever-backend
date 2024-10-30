@@ -13,6 +13,6 @@ const orderSchema = new Schema(
   { timestamps: true }
 );
 
-const orderModel = model.order || model("order", orderSchema);
+const orderModel = model("order", orderSchema);
 
 export default orderModel;

@@ -11,7 +11,10 @@ const isAdmin = asyncHandler((req, res, next) => {
 
   const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
-  if (decodedToken !== process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD) {
+  if (
+    decodedToken.id !==
+    process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD
+  ) {
     res.status(403);
     throw new Error("Invalid token for admin authentication");
   }

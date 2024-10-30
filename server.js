@@ -17,20 +17,10 @@ const port = process.env.PORT || 4000;
 connectDatabase();
 connectCloudinary();
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const corsOptions = {
-  origin: [
-    "https://forever-admin-roan.vercel.app/",
-    "https://forever-app.vercel.app/",
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
 
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
